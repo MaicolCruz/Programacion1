@@ -1,10 +1,10 @@
 package co.edu.uniquindio.poo;
 
 /**
- * Registro que agrupa los datos de una asistencia a una clase
+ *
  * 
- * @author Área de programación UQ
- * @since 2024-01
+ * @author Hector Daniel
+ * @author1 Maicol Paez
  * 
  *        Licencia GNU/GPL V3.0
  *        (https://raw.githubusercontent.com/grid-uq/poo/main/LICENSE)
@@ -12,6 +12,6 @@ package co.edu.uniquindio.poo;
 public record Asistencia(ClaseCurso claseCurso, TipoAsistencia tipoAsistencia) {
 
     public Asistencia {
-        assert claseCurso != null;
+        assert claseCurso != null : "El  parámetro clase no puede ser nulo, favro ingresar otro parámetro";
     }
 }

@@ -10,11 +10,13 @@ import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
 /**
- * Clase para probar el funcionamiento del código de un curso - parte 1
- * @author Área de programación UQ
- * @since 2024-01
+ *
  * 
- * Licencia GNU/GPL V3.0 (https://raw.githubusercontent.com/grid-uq/poo/main/LICENSE) 
+ * @author Hector Daniel
+ * @author1 Maicol Paez
+ * 
+ *        Licencia GNU/GPL V3.0
+ *        (https://raw.githubusercontent.com/grid-uq/poo/main/LICENSE)
  */
 public class CursoTest2 {
     private static final Logger LOG = Logger.getLogger(CursoTest2.class.getName());

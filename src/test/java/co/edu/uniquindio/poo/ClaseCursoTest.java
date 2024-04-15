@@ -10,10 +10,10 @@ import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
 /**
- * Clase para probar el funcionamiento del código de la clase de un curso
+ *
  * 
- * @author Área de programación UQ
- * @since 2024-01
+ * @author Hector Daniel
+ * @author1 Maicol Paez
  * 
  *        Licencia GNU/GPL V3.0
  *        (https://raw.githubusercontent.com/grid-uq/poo/main/LICENSE)

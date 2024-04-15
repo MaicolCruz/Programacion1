@@ -11,10 +11,10 @@ import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
 /**
- * Clase para probar el funcionamiento del código de un estudiante - Parte 2
+ *
  * 
- * @author Área de programación UQ
- * @since 2024-01
+ * @author Hector Daniel
+ * @author1 Maicol Paez
  * 
  *        Licencia GNU/GPL V3.0
  *        (https://raw.githubusercontent.com/grid-uq/poo/main/LICENSE)
@@ -44,7 +44,7 @@ public class EstudianteTest2 {
         LOG.info("Finalización registrarClases");
     }
 
-    // TODO ¿Cómo hacer más cortos las siguientes pruebas?
+    // Todo ¿Cómo hacer más cortos las siguientes pruebas?
 
     /**
      * Prueba para verificar que se obtiene la lista de asistentes a una clase

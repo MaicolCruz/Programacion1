@@ -3,19 +3,17 @@ package co.edu.uniquindio.poo;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.function.Predicate;
-
 /**
- * Registro que agrupa los datos de un Curso
+ *
  * 
- * @author Área de programación UQ
- * @since 2024-01
+ * @author Hector Daniel
+ * @author1 Maicol Paez
  * 
  *        Licencia GNU/GPL V3.0
  *        (https://raw.githubusercontent.com/grid-uq/poo/main/LICENSE)
  */
 
-public class Curso {
+ public class Curso {
     private final String nombre;
     private final Collection<Estudiante> estudiantes;
     private final Collection<ClaseCurso> clases;
@@ -47,8 +45,7 @@ public class Curso {
      * @param estudiante Estudiante que se desea agregar
      */
     public void agregarEstudiante(Estudiante estudiante) {
-        assert validarNumeroIdentificacionExiste(estudiante.getNumeroIdentificacion()) == false
-                : "El número de identificación ya existe.";
+        assert !validarNumeroIdentificacionExiste(estudiante.getNumeroIdentificacion()) : "El número de identificación ya existe.";
         estudiantes.add(estudiante);
     }
 
@@ -64,6 +61,7 @@ public class Curso {
         for (Estudiante estudiante : estudiantes) {
             if (estudiante.getNumeroIdentificacion().equals(numeroIdenficacion)) {
                 estudianteInteres = estudiante;
+                break;
             }
         }
         return estudianteInteres;
@@ -87,20 +85,18 @@ public class Curso {
      *         registrado.
      */
     private boolean validarNumeroIdentificacionExiste(String numeroIdentificacion) {
-        boolean existe = false;
-
         for (Estudiante estudiante : estudiantes) {
             if (estudiante.getNumeroIdentificacion().equals(numeroIdentificacion)) {
-                existe = true;
+                return true;
             }
         }
 
-        return existe;
+        return false;
     }
 
     /**
      * Método para programar (agregar) una clase a un curso.
-     * TODO evitar agregar más de una vez una misma clase.
+     * Todo evitar agregar más de una vez una misma clase.
      * 
      * @param claseCurso claseCurso que se desea programar
      */
@@ -124,9 +120,13 @@ public class Curso {
      * @return colección de los estudiantes que asistieron a una clase interés
      */
     public Collection<Estudiante> getAsistentes(ClaseCurso claseCurso) {
-        Predicate<Estudiante> asistioClase = j -> j.asistioClase(claseCurso);
-        var asistentes = estudiantes.stream().filter(asistioClase).toList();
-        return asistentes;
+        Collection<Estudiante> asistentes = new LinkedList<>();
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.asistioClase(claseCurso)) {
+                asistentes.add(estudiante);
+            }
+        }
+        return Collections.unmodifiableCollection(asistentes);
     }
 
     /**
@@ -138,18 +138,24 @@ public class Curso {
      *         interés
      */
     public Collection<Estudiante> getAusentes(ClaseCurso claseCurso) {
-        Predicate<Estudiante> asistioClase = j -> !j.asistioClase(claseCurso);
-        var asistentes = estudiantes.stream().filter(asistioClase).toList();
-        return asistentes;
+        Collection<Estudiante> ausentes = new LinkedList<>();
+        for (Estudiante estudiante : estudiantes) {
+            if (!estudiante.asistioClase(claseCurso)) {
+                ausentes.add(estudiante);
+            }
+        }
+        return Collections.unmodifiableCollection(ausentes);
     }
 
 
     public double calcularPorcentajeAsistencia(ClaseCurso claseCurso) {
-        var cantidadEstudiantes = estudiantes.size();
-
-        Predicate<Estudiante> asistioClase = j -> j.asistioClase(claseCurso);
-        var cantidadAsistentes = estudiantes.stream().filter(asistioClase).count();
-
+        int cantidadEstudiantes = estudiantes.size();
+        int cantidadAsistentes = 0;
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.asistioClase(claseCurso)) {
+                cantidadAsistentes++;
+            }
+        }
         return (double) cantidadAsistentes / cantidadEstudiantes;
     }
 
