@@ -1,11 +1,11 @@
 # problema02
 
-Descripciín basisca de su Proyecto de POO ...
+Descripción básica de su Proyecto de POO ...
 
 # Autores
 
-- Autor 1
-- Autor 2
+- Autor: Maicol Paez
+- Co-Autor: Daniel Gonzalez
 
 # Herramientas
 
