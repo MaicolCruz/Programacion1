@@ -10,8 +10,8 @@ import java.util.LinkedList;
  * @author Hector Daniel
  * @author1 Maicol Paez
  * 
- *        Licencia GNU/GPL V3.0
- *        (https://raw.githubusercontent.com/grid-uq/poo/main/LICENSE)
+ *          Licencia GNU/GPL V3.0
+ *          (https://raw.githubusercontent.com/grid-uq/poo/main/LICENSE)
  */
 public class Estudiante {
     private final String nombres;
@@ -22,11 +22,13 @@ public class Estudiante {
     private final int edad;
     private final Collection<NotaObtenida> notasObtenidas;
 
-    public Estudiante(String nombres, String apellidos, String numeroIdentificacion, String correo, String telefono, int edad) {
+    public Estudiante(String nombres, String apellidos, String numeroIdentificacion, String correo, String telefono,
+            int edad) {
 
         assert nombres != null && !nombres.isBlank() : "El nombre es tiene valores invalidos";
         assert apellidos != null && !apellidos.isBlank() : "El numero de Id es invalido";
-        assert numeroIdentificacion != null && !numeroIdentificacion.isBlank() : "El apellido es tiene valores invalidos";
+        assert numeroIdentificacion != null && !numeroIdentificacion.isBlank()
+                : "El apellido es tiene valores invalidos";
         assert correo != null && correo.contains("@") : "El correo ingresado debe tener un @";
         assert telefono != null : "el numero de telefono es invalido";
         assert edad > 0 : "La edad ingresada debe ser positiva y mayor a 0";
@@ -48,7 +50,7 @@ public class Estudiante {
     public String getNombres() {
         return nombres;
     }
-    
+
     /**
      * Método para obtener los apellidos del estudiante
      * 
@@ -132,6 +134,7 @@ public class Estudiante {
         }
         throw new IllegalArgumentException("No se encontró una nota para la nota parcial");
     }
+
     /**
      * Método para obtener una colección NO modificable de las notas parciales del
      * curso.
@@ -162,6 +165,7 @@ public class Estudiante {
         }
         throw new IllegalArgumentException("No se encontro una nota para la nota pacial especificada");
     }
+
     /**
      * Método para obtener la nota definitiva usando un promedio ponderado suma de
      * todas (nota * porcentaje)
@@ -172,7 +176,7 @@ public class Estudiante {
         validarNotas100Porciento();
 
         double definitiva = 0.0;
-        for (NotaObtenida nota : notasObtenidas)  {
+        for (NotaObtenida nota : notasObtenidas) {
             definitiva += (nota.getNotaObtenida() * nota.getNotaParcial().porcentaje());
         }
         return definitiva;
@@ -187,7 +191,7 @@ public class Estudiante {
         for (NotaObtenida nota : notasObtenidas) {
             pesoNotas += nota.getNotaParcial().porcentaje();
         }
-        if (Math.abs(1.0 - pesoNotas)>App.PRECISION) {
+        if (Math.abs(1.0 - pesoNotas) > App.PRECISION) {
             throw new IllegalStateException("Las notas parciales no suman 1.0 (100%)");
         }
     }
